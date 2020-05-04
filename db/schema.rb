@@ -10,28 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_145304) do
+ActiveRecord::Schema.define(version: 2020_05_04_140513) do
 
   create_table "bathrooms", force: :cascade do |t|
-    t.string "room_type"
     t.integer "size"
     t.boolean "half?"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_style_id"
+    t.index ["room_style_id"], name: "index_bathrooms_on_room_style_id"
   end
 
   create_table "bedrooms", force: :cascade do |t|
-    t.string "room_type"
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_style_id"
+    t.index ["room_style_id"], name: "index_bedrooms_on_room_style_id"
   end
 
   create_table "garages", force: :cascade do |t|
-    t.string "room_type"
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_style_id"
+    t.index ["room_style_id"], name: "index_garages_on_room_style_id"
   end
 
   create_table "housebathrooms", force: :cascade do |t|
@@ -85,15 +88,25 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
   end
 
   create_table "kitchens", force: :cascade do |t|
-    t.string "room_type"
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_style_id"
+    t.index ["room_style_id"], name: "index_kitchens_on_room_style_id"
   end
 
   create_table "other_rooms", force: :cascade do |t|
     t.string "room_type"
     t.integer "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "room_style_id"
+    t.index ["room_style_id"], name: "index_other_rooms_on_room_style_id"
+  end
+
+  create_table "room_styles", force: :cascade do |t|
+    t.string "style"
+    t.float "cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -107,6 +120,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.string "show_name"
   end
 
+  add_foreign_key "bathrooms", "room_styles"
+  add_foreign_key "bedrooms", "room_styles"
+  add_foreign_key "garages", "room_styles"
   add_foreign_key "housebathrooms", "bathrooms"
   add_foreign_key "housebathrooms", "houses"
   add_foreign_key "housebedrooms", "bedrooms"
@@ -117,4 +133,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
   add_foreign_key "housekitchens", "kitchens"
   add_foreign_key "houseothers", "houses"
   add_foreign_key "houseothers", "other_rooms"
+  add_foreign_key "kitchens", "room_styles"
+  add_foreign_key "other_rooms", "room_styles"
 end
