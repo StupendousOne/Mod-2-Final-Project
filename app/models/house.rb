@@ -5,4 +5,8 @@ class House < ApplicationRecord
     has_many :bathrooms, through: :housebathrooms
     has_many :housegarages
     has_many :garages, through: :housegarages
+    has_many :housekitchens
+    has_many :kitchens, through: :housekitchens
+    has_many :housebedrooms
+    has_many :bedrooms, through: :housebedrooms
 end
