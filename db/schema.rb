@@ -111,6 +111,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_140513) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "show_name"
+  end
+
   add_foreign_key "bathrooms", "room_styles"
   add_foreign_key "bedrooms", "room_styles"
   add_foreign_key "garages", "room_styles"
