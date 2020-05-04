@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.valid?
-            flash[:success] = "User Created!"
-            redirect_to user_path(@user)
+            flash[:success] = "User Created"
+            redirect_to houses_path
         else
             flash[:warning] = "Invalid Email or Password"
             render :new

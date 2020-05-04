@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             flash[:alert] = "User Successfully Signed In"
-            redirect_to user_path(@user)
+            redirect_to houses_path
         else
             # @error = "Username or Email is Invalid"
             flash[:alert] = "Username or Email is Invalid. Please Try Again."
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session[:user_id] = nil
-        flash[:success] = “Successfully Logged Out!”
-        redirect_to ‘/login’
+        flash[:success] = "Successfully Logged Out!"
+        redirect_to '/login'
     end
 end
