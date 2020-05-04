@@ -1,6 +1,6 @@
-class CreateOtherRooms < ActiveRecord::Migration[6.0]
+class CreateGarages < ActiveRecord::Migration[6.0]
   def change
-    create_table :other_rooms do |t|
+    create_table :garages do |t|
       t.string :room_type
       t.integer :size
 
