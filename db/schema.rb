@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_131949) do
+ActiveRecord::Schema.define(version: 2020_05_04_145304) do
 
   create_table "bathrooms", force: :cascade do |t|
     t.string "room_type"
@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 2020_05_04_131949) do
     t.integer "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "show_name"
   end
 
   add_foreign_key "housebathrooms", "bathrooms"
