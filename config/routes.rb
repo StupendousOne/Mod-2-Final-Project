@@ -10,4 +10,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#new'
 #Static
   get '/' => 'static#home'
+#RESTful controllers
+  resources :houses
+  resources :bathrooms
+  resources :bedrooms
+  resources :garages
+  resources :other_rooms
+  resources :kitchens
+  resources :room_styles
 end
