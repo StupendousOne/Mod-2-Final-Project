@@ -1,0 +1,22 @@
+<ul>
+<% if !@bathroom.errors.empty? %>
+    <% @bathroom.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+    <% end %>
+<% end %>
+</ul>
+
+<br>
+
+<%= form_for(@bathroom) do |f|%>
+    <%= f.label :'What is the Size of the Bathroom?'%>
+    <%= f.number_field :size%> <br>
+
+    <%= f.label :'Is this Bathroom a Half Bath?'%>
+    <%= f.check_box :half%> <br>
+
+    <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style%> <br>
+
+    <%= f.submit %>
+<% end %>
+

@@ -50,7 +50,7 @@ end
 
 bathrooms = []
 20.times do
-    bathrooms << Bathroom.create({half?: [true, false].sample, size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id})
+    bathrooms << Bathroom.create({half: [true, false].sample, size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id})
 end
 
 kitchens = []

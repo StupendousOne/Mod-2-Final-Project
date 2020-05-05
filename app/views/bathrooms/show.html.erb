@@ -1,0 +1,13 @@
+<h1>Here is the new Bathroom</h1>
+<h2>This bathroom is of the <%=@bathroom.room_style.style%> style
+and is <%=@bathroom.size%> square feet. <%=@half%> </h2>
+<h3>This Bathroom is part of <%=@bathroom.houses.count%> houses at the moment.</h3>
+<% @bathroom.houses.each do |house|%>
+    <%= link_to "View This House", house_path(house)%> <br>
+<% end %>
+<br>
+
+<%= link_to "Make a new bathroom", new_bathroom_path%> <br>
+<%= link_to "Edit This Bathroom", edit_bathroom_path(@bathroom)%> <br>
+<%= link_to "Delete This Bathroom", bathroom_path(@bathroom), method: :delete%> <br>
+<%= link_to "View All Bathrooms", bathrooms_path%>

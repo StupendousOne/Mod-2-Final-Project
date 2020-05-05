@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_173408) do
+ActiveRecord::Schema.define(version: 2020_05_05_140352) do
 
   create_table "bathrooms", force: :cascade do |t|
     t.integer "size"
-    t.boolean "half?"
+    t.boolean "half"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "room_style_id"
