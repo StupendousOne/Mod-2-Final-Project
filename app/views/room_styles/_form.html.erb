@@ -1,0 +1,9 @@
+<%= form_for @room_style do |f| %>
+    <%= f.label :style, "Name: " %>
+    <%= f.text_field :style %><br>
+
+    <%= f.label :cost, "Cost Multiplier: " %>
+    <%= f.text_field :cost %><br>
+
+    <%= f.submit %>
+<% end %>

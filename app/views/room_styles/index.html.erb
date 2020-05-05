@@ -1,0 +1,13 @@
+<h2>Styles</h2>
+
+<ul>
+  <% @room_styles.each do |style| %>
+    <li>
+      <%= link_to style.style, room_style_path(style) %>
+    </li>
+    <br>
+  <% end %>
+</ul>
+<br>
+<br>
+<%= link_to 'Create a style', new_room_style_path %>

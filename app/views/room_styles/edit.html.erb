@@ -1,0 +1,11 @@
+<h2> <% @room_style.style %> </h2>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |message| %>
+    <h4 style="color: red;"> Error: <%= message %> </h4>
+  <% end %>
+<% end %>
+
+<p> Edit your Style: </p>
+
+<%= render "form"%>
