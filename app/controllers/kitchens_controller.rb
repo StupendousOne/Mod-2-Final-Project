@@ -12,7 +12,12 @@ class KitchensController < ApplicationController
 
     def create
         @kitchen = Kitchen.create(kitchen_params)
-        redirect_to kitchen_path(@kitchen)
+        if @kitchen.errors.empty?
+            redirect_to kitchen_path(@kitchen)
+        else
+            flash.alert = "Kitchen Creation Failed"
+            render :new
+        end
     end
 
     def show
@@ -45,6 +50,6 @@ class KitchensController < ApplicationController
     private
 
         def kitchen_params
-            params.require(:kitchen).permit(:size, :room_style_id)
+            params.require(:kitchen).permit(:size, :room_style_id, :user_id)
         end
 end

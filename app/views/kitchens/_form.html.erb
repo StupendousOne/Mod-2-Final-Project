@@ -9,6 +9,8 @@
 <br>
 
 <%= form_for(@kitchen) do |f|%>
+    <%= f.hidden_field :user_id, value: current_user.id%>
+
     <%= f.label :'What is the Size of the Kitchen?'%>
     <%= f.number_field :size%> <br>
 
