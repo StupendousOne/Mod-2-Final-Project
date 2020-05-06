@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 #Users
   resources :users, only: [:show, :edit, :update, :new, :create]
   get '/signup' => 'users#new'
+  get 'users/private_page' => 'users#private_page', as: 'private_page'
 #Sessions
   resources :sessions, only: [:new, :create, :destroy]
   get '/login' => 'sessions#new'

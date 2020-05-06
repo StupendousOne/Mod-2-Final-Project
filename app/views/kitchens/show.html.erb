@@ -1,4 +1,13 @@
-<h1>Here is the new Kitchen, <%= @kitchen.user.show_name%> </h1>
+<h1>Here is the Kitchen, <%= current_user.show_name%> </h1>
+
+<ul>
+<% flash.each do |type, msg| %>
+    <li><%= msg %></li>
+<% end %>
+</ul>
+
+<h2>The Creator of This Design is: <%=link_to @kitchen.user.show_name, user_path(@kitchen.user)%> </h2>
+
 <h2>This Kitchen is of the <%=@kitchen.room_style.style%> style
 and is <%=@kitchen.size%> square feet. </h2>
 <h3>This Kitchen is part of <%=@kitchen.houses.count%> houses at the moment.</h3>
@@ -8,6 +17,12 @@ and is <%=@kitchen.size%> square feet. </h2>
 <br>
 
 <%= link_to "Make a new Kitchen", new_kitchen_path%> <br>
-<%= link_to "Edit This Kitchen", edit_kitchen_path(@kitchen)%> <br>
-<%= link_to "Delete This Kitchen", kitchen_path(@kitchen), method: :delete%> <br>
+
+<% if @edit_b%>
+    <%= link_to "Edit This Kitchen", edit_kitchen_path(@kitchen)%> <br>
+<% end %>
+<% if @delete_b %>
+    <%= link_to "Delete This Kitchen", kitchen_path(@kitchen), method: :delete%> <br>
+<% end %>
+
 <%= link_to "View All Kitchens", kitchens_path%>

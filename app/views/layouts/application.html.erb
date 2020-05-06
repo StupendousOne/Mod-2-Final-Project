@@ -12,6 +12,8 @@
   <body>
     <%= link_to "Click Here to Log Out", logout_path%>
     <%= link_to current_user.show_name, user_path(current_user)%>
+    <%= link_to "View All Houses", houses_path%>
+    
     <%= yield %>
   </body>
 </html>

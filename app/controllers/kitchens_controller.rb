@@ -1,6 +1,8 @@
 class KitchensController < ApplicationController
 
     before_action :authorized
+    before_action :find_kitchen, only:[:show, :edit, :update, :destroy]
+    before_action :is_current_user, only: [:show]
     
     def index
         @kitchens = Kitchen.all
@@ -21,28 +23,35 @@ class KitchensController < ApplicationController
     end
 
     def show
-        @kitchen = Kitchen.find_by(id: params[:id])
+        @edit_b = is_current_user
+        @delete_b = is_current_user
     end
 
     def edit
-        @kitchen = Kitchen.find_by(id: params[:id])
+        if current_user != @kitchen.user
+            flash.alert = "Cannot Edit Other User's Pages"
+            redirect_to kitchen_path(@kitchen)
+        end
     end
 
     def update
-        @kitchen = Kitchen.find_by(id: params[:id])
         @kitchen.update(kitchen_params)
         redirect_to kitchen_path(@kitchen)
     end
 
     def destroy
-        @kitchen = Kitchen.find_by(id: params[:id])
-        begin
-            @kitchen.destroy
-        rescue => exception
-            flash.alert = "Deletion Failed"
-            redirect_to kitchens_path
+        if @kitchen.user = current_user
+            begin
+                @kitchen.destroy
+            rescue => exception
+                flash.alert = "Deletion Failed. Can't Be Deleted."
+                redirect_to kitchens_path
+            else
+                flash.alert = "Deletion Successful"
+                redirect_to kitchens_path
+            end
         else
-            flash.alert = "Deletion Successful"
+            flash.alert = "Deletion Failed. Not Your Kitchen."
             redirect_to kitchens_path
         end
     end
@@ -51,5 +60,13 @@ class KitchensController < ApplicationController
 
         def kitchen_params
             params.require(:kitchen).permit(:size, :room_style_id, :user_id)
+        end
+
+        def find_kitchen
+            @kitchen = Kitchen.find_by(id: params[:id])
+        end
+
+        def is_current_user
+            @kitchen.user == current_user
         end
 end
