@@ -5,6 +5,7 @@ application up and running.
 
 TODO:
 
+* [x] MVC
 * [ ] Add User to all models
 * [ ] Adding rooms to your houses upon creation/editing
 * [ ] Input Type Validation in edit and new
