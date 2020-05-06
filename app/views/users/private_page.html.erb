@@ -1,0 +1,27 @@
+<h1>Welcome To Your Own Page, <%=current_user.show_name%> </h1>
+
+<h2>Here Are All Of Your Houses:</h2>
+<ul>
+    <% if current_user.houses.count == 0%>
+        <li>You Dont Have Any Houses. <%= link_to "Click Here To Make A New One", new_house_path %> </li>
+    <% else %>
+        <% current_user.houses.each do |house|%>
+            <li> <%= link_to "View This House", house_path(house)%> </li>
+        <% end %>
+        <br>
+        <%= link_to "Create A New House", new_house_path%>
+    <% end %>
+</ul>
+
+<h2>Here Are All Of Your Kitchens:</h2>
+<ul>
+    <% if current_user.kitchens.count == 0%>
+        <li>You Dont Have Any Kitchens. <%= link_to "Click Here To Make A New One", new_kitchen_path %> </li>
+    <% else %>
+        <% current_user.kitchens.each do |kitchen|%>
+            <li> <%= link_to "View This Kitchen", kitchen_path(kitchen) %> </li>
+        <% end %>
+        <br>
+        <%= link_to "Create A New Kitchen", new_kitchen_path%>
+    <% end %>
+</ul>
