@@ -1,0 +1,18 @@
+<ul>
+<% if !@kitchen.errors.empty? %>
+    <% @kitchen.errors.full_messages.each do |message|%>
+        <li><%= message %></li>
+    <% end %>
+<% end %>
+</ul>
+
+<br>
+
+<%= form_for(@kitchen) do |f|%>
+    <%= f.label :'What is the Size of the Kitchen?'%>
+    <%= f.number_field :size%> <br>
+
+    <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style%> <br>
+
+    <%= f.submit %>
+<% end %>

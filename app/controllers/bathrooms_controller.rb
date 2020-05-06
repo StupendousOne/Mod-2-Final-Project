@@ -1,4 +1,7 @@
 class BathroomsController < ApplicationController
+
+    before_action :authorized
+
     def index
         @bathrooms = Bathroom.all
     end
@@ -43,7 +46,7 @@ class BathroomsController < ApplicationController
             redirect_to bathrooms_path
         end
     end
-    
+
     private
 
         def bathroom_params

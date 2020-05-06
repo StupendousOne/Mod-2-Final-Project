@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def new
+        render :layout => false
     end
     
     def create
@@ -9,7 +10,6 @@ class SessionsController < ApplicationController
             flash[:alert] = "User Successfully Signed In"
             redirect_to houses_path
         else
-            # @error = "Username or Email is Invalid"
             flash[:alert] = "Username or Email is Invalid. Please Try Again."
             redirect_to login_path
         end
