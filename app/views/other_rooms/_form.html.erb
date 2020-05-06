@@ -1,0 +1,16 @@
+<%= form_for @other_room do |f| %>
+    <!-- TODO 
+        create new style from here
+        Add to house(s) you own
+    -->
+    <%= f.label :room_type, "Room Type: " %>
+    <%= f.text_field :room_type %><br>
+
+    <%= f.label :size, "Size: " %>
+    <%= f.text_field :size %><br>
+
+    <%= f.label :room_style_id, "Style: " %>
+    <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style %>
+
+    <%= f.submit %>
+<% end %>
