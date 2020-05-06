@@ -7,7 +7,7 @@
     <%= f.text_field :room_type %><br>
 
     <%= f.label :size, "Size: " %>
-    <%= f.text_field :size %><br>
+    <%= f.number_field :size %><br>
 
     <%= f.label :room_style_id, "Style: " %>
     <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style %>
