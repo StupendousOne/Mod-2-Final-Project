@@ -1,0 +1,23 @@
+<h2>Other Rooms</h2>
+
+<ul>
+  <% @other_rooms.each do |other_room| %>
+    <li>
+        <%= link_to "Bedroom No. #{other_room.id}  ", other_room_path(other_room) %>
+        <ul>
+            Room Type:
+            <%= " #{other_room.room_type}" %>
+            <br>
+            Room Size: 
+            <%= " #{other_room.size} sqft" %>
+            <br>
+            Room Style: 
+            <%= link_to " #{other_room.room_style.style}", room_style_path(other_room.room_style) %>
+        </ul>
+    </li>
+    <br>
+  <% end %>
+</ul>
+<br>
+<br>
+<%= link_to 'Create a other_room', new_other_room_path %>

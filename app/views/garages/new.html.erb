@@ -1,0 +1,9 @@
+<h2> <%= "Create a new garage" %> </h2>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |message| %>
+    <h4 style="color: red;"> Error: <%= message %> </h4>
+  <% end %>
+<% end %>
+
+<%= render "form"%>

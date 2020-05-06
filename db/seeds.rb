@@ -20,11 +20,8 @@ RoomStyle.destroy_all
 House.destroy_all
 
 
-
-
-houses = []
 10.times do
-    houses << House.create
+    House.create!
 end
 
 styles = [
@@ -40,27 +37,25 @@ styles = [
 
 
 styles.each { |s|  RoomStyle.create({style: s, cost: rand(0.5..5.0)}) }
-room_styles = RoomStyle.all
 
-bedrooms = []
 20.times do
-    index = rand(0...room_styles.length)
-    bedrooms << Bedroom.create!({size: rand(25..100), room_style_id: room_styles[index].id})
+    Bedroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
 end
 
-bathrooms = []
 20.times do
+<<<<<<< HEAD
     bathrooms << Bathroom.create({half: [true, false].sample, size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id})
+=======
+    Bathroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+>>>>>>> a9f4724d83df196e49cc939094c4a9cbe30e6010
 end
 
-kitchens = []
 20.times do
-    kitchens << Kitchen.create({size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id})
+    Kitchen.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
 end
 
-garages = []
 20.times do
-    garages << Garage.create({size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id})
+    Garage.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
 end
 
 other_room_type = [
@@ -72,15 +67,14 @@ other_room_type = [
     "Theatre"
 ]
 
-otherrooms = []
 20.times do
-    otherrooms << OtherRoom.create({size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id, room_type: other_room_type[rand(0...other_room_type.length)]})
+    OtherRoom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample})
 end
 
-30.times do
-    Housebedroom.create({house_id: houses[rand(0...houses.length)].id, bedroom_id: bedrooms[rand(0...bedrooms.length)].id})
-    Housebathroom.create({house_id: houses[rand(0...houses.length)].id, bathroom_id: bathrooms[rand(0...bathrooms.length)].id})
-    Housekitchen.create({house_id: houses[rand(0...houses.length)].id, kitchen_id: kitchens[rand(0...kitchens.length)].id})
-    Housegarage.create({house_id: houses[rand(0...houses.length)].id, garage_id: garages[rand(0...garages.length)].id})
-    Houseother.create({house_id: houses[rand(0...houses.length)].id, other_room_id: otherrooms[rand(0...otherrooms.length)].id})
+60.times do
+    Housebedroom.create!({house_id: House.all.sample.id, bedroom_id: Bedroom.all.sample.id})
+    Housebathroom.create!({house_id: House.all.sample.id, bathroom_id: Bathroom.all.sample.id})
+    Housekitchen.create!({house_id: House.all.sample.id, kitchen_id: Kitchen.all.sample.id})
+    Housegarage.create!({house_id: House.all.sample.id, garage_id: Garage.all.sample.id})
+    Houseother.create!({house_id: House.all.sample.id, other_room_id: OtherRoom.all.sample.id})
 end

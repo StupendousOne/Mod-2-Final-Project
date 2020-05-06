@@ -1,0 +1,23 @@
+<h2> <%= @room_style.style %> </h2>
+
+<% if flash[:success] %>
+    <h4 style="color: green;">
+      <%= flash[:success] %>
+    </h4>
+<% end %>
+
+<ul>
+    Cost: <%= @room_style.cost.round(2) %>x <br> 
+    Rooms with this style: 
+        <ul>
+            <% @room_style.all_rooms.each do |room| %>
+                <li> 
+                    Room No: <%= link_to "#{room.id}", room %> 
+                    Room Type: <%= room.class == "OtherRoom"? room.room_type : room.class %> 
+                </li>
+            <% end %>
+        </ul>
+</ul>
+<br><br>
+
+<%= link_to "Edit #{@room_style.style} style", edit_room_style_path(@room_style) %>

@@ -1,0 +1,20 @@
+<h2>Garages</h2>
+
+<ul>
+  <% @garages.each do |garage| %>
+    <li>
+        <%= link_to "Garage No. #{garage.id}  ", garage_path(garage) %>
+        <ul>
+            Room Size: 
+            <%= " #{garage.size} sqft" %>
+            <br>
+            Room Style: 
+            <%= link_to " #{garage.room_style.style}", room_style_path(garage.room_style) %>
+        </ul>
+    </li>
+    <br>
+  <% end %>
+</ul>
+<br>
+<br>
+<%= link_to 'Create a garage', new_garage_path %>

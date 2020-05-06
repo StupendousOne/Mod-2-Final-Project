@@ -3,28 +3,11 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+TODO:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* This is a Test (Moxxie)
-
-* Testing Testing
-
-### This Is A Test
-
-* ...
+* [x] MVC
+* [ ] Add User to all models
+* [ ] Adding rooms to your houses upon creation/editing
+* [ ] Input Type Validation in edit and new
+* [ ] Authorizing User to only edit his houses/rooms/styles
+* [ ] Analytics(to be split further)
