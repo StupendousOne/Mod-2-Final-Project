@@ -21,7 +21,7 @@ House.destroy_all
 
 
 10.times do
-    House.create!
+    House.create!(user_id: User.all.sample.id)
 end
 
 styles = [
@@ -36,26 +36,22 @@ styles = [
 ]
 
 
-styles.each { |s|  RoomStyle.create({style: s, cost: rand(0.5..5.0)}) }
+styles.each { |s|  RoomStyle.create({style: s, cost: rand(0.5..5.0), user_id: User.all.sample.id}) }
 
 20.times do
-    Bedroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+    Bedroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, user_id: User.all.sample.id})
 end
 
 20.times do
-<<<<<<< HEAD
-    bathrooms << Bathroom.create({half: [true, false].sample, size: rand(25..100), room_style_id: room_styles[rand(0...room_styles.length)].id})
-=======
-    Bathroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
->>>>>>> a9f4724d83df196e49cc939094c4a9cbe30e6010
+    Bathroom.create({half: [true, false].sample, size: rand(25..100), room_style_id: RoomStyle.all.sample.id, user_id: User.all.sample.id})
 end
 
 20.times do
-    Kitchen.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+    Kitchen.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, user_id: User.all.sample.id})
 end
 
 20.times do
-    Garage.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+    Garage.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, user_id: User.all.sample.id})
 end
 
 other_room_type = [
@@ -68,7 +64,7 @@ other_room_type = [
 ]
 
 20.times do
-    OtherRoom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample})
+    OtherRoom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample, user_id: User.all.sample.id})
 end
 
 60.times do
