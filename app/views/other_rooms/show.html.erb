@@ -21,6 +21,6 @@
         </ul>
 </ul>
 <br><br>
-<% if @other_room.user == @user %>
+<% if @other_room.user == current_user %>
     <%= link_to "Edit Bedroom No.#{@other_room.id}", edit_other_room_path(@other_room) %>
 <% end %>

@@ -23,6 +23,6 @@
 </ul>
 <br><br>
 
-<% if @garage.user == @user %>
+<% if @garage.user == current_user %>
     <%= link_to "Edit Garage No.#{@garage.id}", edit_garage_path(@garage) %>
 <% end %>

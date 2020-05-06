@@ -19,6 +19,6 @@
         </ul>
 </ul>
 <br><br>
-<% if @room_style.user == @user %>
+<% if @room_style.user == current_user %>
     <%= link_to "Edit #{@room_style.style} style", edit_room_style_path(@room_style) %>
 <% end %>
