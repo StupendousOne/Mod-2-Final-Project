@@ -7,6 +7,7 @@
 <% end %>
 
 <ul>
+    Owner <%= " " %>
     Size: <%= " #{@garage.size}" %> <br>
     Style:
     <%= link_to  " #{@garage.room_style.style}", room_style_path(@garage.room_style) %>
@@ -22,4 +23,6 @@
 </ul>
 <br><br>
 
-<%= link_to "Edit Garage No.#{@garage.id}", edit_garage_path(@garage) %>
+<% if @garage.user == @user %>
+    <%= link_to "Edit Garage No.#{@garage.id}", edit_garage_path(@garage) %>
+<% end %>

@@ -53,6 +53,6 @@ class BedroomsController < ApplicationController
     end
     
     def bedroom_params
-        params.require(:bedroom).permit(:size, :room_style_id)
+        params.require(:bedroom).permit(:size, :room_style_id, :user_id)
     end
 end

@@ -1,8 +1,6 @@
 <%= form_for @other_room do |f| %>
-    <!-- TODO 
-        create new style from here
-        Add to house(s) you own
-    -->
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
     <%= f.label :room_type, "Room Type: " %>
     <%= f.text_field :room_type %><br>
 

@@ -3,6 +3,8 @@
         create new style from here
         Add to house(s) you own
     -->
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
     <%= f.label :size, "Size: " %>
     <%= f.number_field :size %><br>
 

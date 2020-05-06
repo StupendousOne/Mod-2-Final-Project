@@ -53,6 +53,6 @@ class OtherRoomsController < ApplicationController
     end
     
     def other_room_params
-        params.require(:other_room).permit(:size, :room_style_id, :room_type)
+        params.require(:other_room).permit(:size, :room_style_id, :room_type, :user_id)
     end
 end

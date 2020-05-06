@@ -53,6 +53,6 @@ class GaragesController < ApplicationController
     end
     
     def garage_params
-        params.require(:garage).permit(:size, :room_style_id)
+        params.require(:garage).permit(:size, :room_style_id, :user_id)
     end
 end
