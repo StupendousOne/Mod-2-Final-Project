@@ -13,7 +13,7 @@ class RoomStylesController < ApplicationController
 
     def update
         if(@room_style.update(room_style_params))
-            flash[:success] = "Book Updated"
+            flash[:success] = "Style Updated"
             redirect_to room_style_path(@room_style)
         else
             flash[:errors] = @room_style.errors.full_messages
@@ -44,14 +44,15 @@ class RoomStylesController < ApplicationController
         else
             flash[:message] = "Style deletion failed!"
             redirect_to room_styles_path
+        end
     end
 
     private
     def find_room_style
         @room_style = RoomStyle.find_by(id: params[:id])
-      end
+    end
     
-      def room_style_params
+    def room_style_params
         params.require(:room_style).permit(:style, :cost)
-      end
+    end
 end

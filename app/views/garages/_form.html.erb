@@ -1,0 +1,13 @@
+<%= form_for @garage do |f| %>
+    <!-- TODO 
+        create new style from here
+        Add to house(s) you own
+    -->
+    <%= f.label :size, "Size: " %>
+    <%= f.text_field :size %><br>
+
+    <%= f.label :room_style_id, "Style: " %>
+    <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style %>
+
+    <%= f.submit %>
+<% end %>

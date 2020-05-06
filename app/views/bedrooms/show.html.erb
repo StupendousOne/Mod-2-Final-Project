@@ -1,0 +1,25 @@
+<h2> <%= "Bedroom No. #{@bedroom.id}" %> </h2>
+
+<% if flash[:success] %>
+    <h4 style="color: green;">
+      <%= flash[:success] %>
+    </h4>
+<% end %>
+
+<ul>
+    Size: <%= " #{@bedroom.size}" %> <br>
+    Style:
+    <%= link_to  " #{@bedroom.room_style.style}", room_style_path(@bedroom.room_style) %>
+    <br>
+    <%= "Houses using bedroom no. #{@bedroom.id}:" %>
+        <ul>
+            <% @bedroom.houses.each do |house| %>
+                <li> 
+                    <%= link_to "House no. #{house.id}", house_path(house) %> 
+                </li>
+            <% end %>
+        </ul>
+</ul>
+<br><br>
+
+<%= link_to "Edit Bedroom No.#{@bedroom.id}", edit_bedroom_path(@bedroom) %>

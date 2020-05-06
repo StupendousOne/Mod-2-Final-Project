@@ -20,11 +20,8 @@ RoomStyle.destroy_all
 House.destroy_all
 
 
-
-
-houses = []
 10.times do
-    houses << House.create
+    House.create!
 end
 
 styles = [
@@ -46,15 +43,15 @@ styles.each { |s|  RoomStyle.create({style: s, cost: rand(0.5..5.0)}) }
 end
 
 20.times do
-    Bathroom.create({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+    Bathroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
 end
 
 20.times do
-    Kitchen.create({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+    Kitchen.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
 end
 
 20.times do
-    Garage.create({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
+    Garage.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id})
 end
 
 other_room_type = [
@@ -67,13 +64,13 @@ other_room_type = [
 ]
 
 20.times do
-    OtherRoom.create({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample})
+    OtherRoom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample})
 end
 
-30.times do
-    Housebedroom.create({house_id: House.all.sample, bedroom_id: Bedroom.all.sample.id})
-    Housebathroom.create({house_id: House.all.sample, bathroom_id: Bathroom.all.sample.id})
-    Housekitchen.create({house_id: House.all.sample, kitchen_id: Kitchen.all.sample.id})
-    Housegarage.create({house_id: House.all.sample, garage_id: Garages.all.sample.id})
-    Houseother.create({house_id: House.all.sample, other_room_id: OtherRoom.all.sample.id})
+60.times do
+    Housebedroom.create!({house_id: House.all.sample.id, bedroom_id: Bedroom.all.sample.id})
+    Housebathroom.create!({house_id: House.all.sample.id, bathroom_id: Bathroom.all.sample.id})
+    Housekitchen.create!({house_id: House.all.sample.id, kitchen_id: Kitchen.all.sample.id})
+    Housegarage.create!({house_id: House.all.sample.id, garage_id: Garage.all.sample.id})
+    Houseother.create!({house_id: House.all.sample.id, other_room_id: OtherRoom.all.sample.id})
 end

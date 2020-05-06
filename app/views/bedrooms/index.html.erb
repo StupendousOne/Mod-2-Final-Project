@@ -1,0 +1,20 @@
+<h2>Bedrooms</h2>
+
+<ul>
+  <% @bedrooms.each do |bedroom| %>
+    <li>
+        <%= link_to "Bedroom No. #{bedroom.id}  ", bedroom_path(bedroom) %>
+        <ul>
+            Room Size: 
+            <%= " #{bedroom.size} sqft" %>
+            <br>
+            Room Style: 
+            <%= link_to " #{bedroom.room_style.style}", room_style_path(bedroom.room_style) %>
+        </ul>
+    </li>
+    <br>
+  <% end %>
+</ul>
+<br>
+<br>
+<%= link_to 'Create a bedroom', new_bedroom_path %>
