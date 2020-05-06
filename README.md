@@ -6,7 +6,7 @@ application up and running.
 TODO:
 
 * [x] MVC
-* [ ] Add User to all models
+* [x] Add User to all models
 * [ ] Adding rooms to your houses upon creation/editing
 * [ ] Input Type Validation in edit and new
 * [ ] Authorizing User to only edit his houses/rooms/styles

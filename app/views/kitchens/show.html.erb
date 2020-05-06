@@ -1,0 +1,13 @@
+<h1>Here is the new Kitchen</h1>
+<h2>This Kitchen is of the <%=@kitchen.room_style.style%> style
+and is <%=@kitchen.size%> square feet. </h2>
+<h3>This Kitchen is part of <%=@kitchen.houses.count%> houses at the moment.</h3>
+<% @kitchen.houses.each do |house|%>
+    <%= link_to "View This House", house_path(house)%> <br>
+<% end %>
+<br>
+
+<%= link_to "Make a new Kitchen", new_kitchen_path%> <br>
+<%= link_to "Edit This Kitchen", edit_kitchen_path(@kitchen)%> <br>
+<%= link_to "Delete This Kitchen", kitchen_path(@kitchen), method: :delete%> <br>
+<%= link_to "View All Kitchens", kitchens_path%>

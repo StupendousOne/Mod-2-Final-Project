@@ -1,0 +1,16 @@
+<ul>
+<% flash.each do |type, msg| %>
+    <li><%= msg %></li>
+<% end %>
+</ul>
+
+<h1>Here are all the Kitchens</h1>
+<%@kitchens.each do |kitchen|%>
+    <%= kitchen.size %> in square feet. <br>
+    <%= kitchen.room_style.style%> <br>
+    <%= link_to "Click Here to View This Kitchen", kitchen_path(kitchen)%> <br>
+    +++++++++++ <br>
+<% end %>
+
+<%= link_to "Make a New Kitchen", new_kitchen_path%> <br>
+
