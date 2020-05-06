@@ -20,12 +20,26 @@ class KitchensController < ApplicationController
     end
 
     def edit
+        @kitchen = Kitchen.find_by(id: params[:id])
     end
 
     def update
+        @kitchen = Kitchen.find_by(id: params[:id])
+        @kitchen.update(kitchen_params)
+        redirect_to kitchen_path(@kitchen)
     end
 
-    def delete
+    def destroy
+        @kitchen = Kitchen.find_by(id: params[:id])
+        begin
+            @kitchen.destroy
+        rescue => exception
+            flash.alert = "Deletion Failed"
+            redirect_to kitchens_path
+        else
+            flash.alert = "Deletion Successful"
+            redirect_to kitchens_path
+        end
     end
 
     private
