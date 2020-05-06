@@ -4,6 +4,7 @@ class RoomStyle < ApplicationRecord
     has_many :kitchens
     has_many :garages
     has_many :other_rooms
+    belongs_to :user
 
     validates :style, :cost, presence: true
 

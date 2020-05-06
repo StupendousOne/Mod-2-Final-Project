@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_05_05_140352) do
-=======
-ActiveRecord::Schema.define(version: 2020_05_04_145304) do
->>>>>>> a9f4724d83df196e49cc939094c4a9cbe30e6010
+ActiveRecord::Schema.define(version: 2020_05_06_140129) do
 
   create_table "bathrooms", force: :cascade do |t|
     t.integer "size"
@@ -22,7 +18,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "room_style_id"
+    t.integer "user_id"
     t.index ["room_style_id"], name: "index_bathrooms_on_room_style_id"
+    t.index ["user_id"], name: "index_bathrooms_on_user_id"
   end
 
   create_table "bedrooms", force: :cascade do |t|
@@ -30,7 +28,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "room_style_id"
+    t.integer "user_id"
     t.index ["room_style_id"], name: "index_bedrooms_on_room_style_id"
+    t.index ["user_id"], name: "index_bedrooms_on_user_id"
   end
 
   create_table "garages", force: :cascade do |t|
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "room_style_id"
+    t.integer "user_id"
     t.index ["room_style_id"], name: "index_garages_on_room_style_id"
+    t.index ["user_id"], name: "index_garages_on_user_id"
   end
 
   create_table "housebathrooms", force: :cascade do |t|
@@ -89,6 +91,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
   create_table "houses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_houses_on_user_id"
   end
 
   create_table "kitchens", force: :cascade do |t|
@@ -96,7 +100,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "room_style_id"
+    t.integer "user_id"
     t.index ["room_style_id"], name: "index_kitchens_on_room_style_id"
+    t.index ["user_id"], name: "index_kitchens_on_user_id"
   end
 
   create_table "other_rooms", force: :cascade do |t|
@@ -105,7 +111,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "room_style_id"
+    t.integer "user_id"
     t.index ["room_style_id"], name: "index_other_rooms_on_room_style_id"
+    t.index ["user_id"], name: "index_other_rooms_on_user_id"
   end
 
   create_table "room_styles", force: :cascade do |t|
@@ -113,6 +121,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
     t.float "cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_room_styles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,8 +135,14 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
   end
 
   add_foreign_key "bathrooms", "room_styles"
+  add_foreign_key "bathrooms", "users"
+  add_foreign_key "bathrooms", "users"
   add_foreign_key "bedrooms", "room_styles"
+  add_foreign_key "bedrooms", "users"
+  add_foreign_key "bedrooms", "users"
   add_foreign_key "garages", "room_styles"
+  add_foreign_key "garages", "users"
+  add_foreign_key "garages", "users"
   add_foreign_key "housebathrooms", "bathrooms"
   add_foreign_key "housebathrooms", "houses"
   add_foreign_key "housebedrooms", "bedrooms"
@@ -137,6 +153,14 @@ ActiveRecord::Schema.define(version: 2020_05_04_145304) do
   add_foreign_key "housekitchens", "kitchens"
   add_foreign_key "houseothers", "houses"
   add_foreign_key "houseothers", "other_rooms"
+  add_foreign_key "houses", "users"
+  add_foreign_key "houses", "users"
   add_foreign_key "kitchens", "room_styles"
+  add_foreign_key "kitchens", "users"
+  add_foreign_key "kitchens", "users"
   add_foreign_key "other_rooms", "room_styles"
+  add_foreign_key "other_rooms", "users"
+  add_foreign_key "other_rooms", "users"
+  add_foreign_key "room_styles", "users"
+  add_foreign_key "room_styles", "users"
 end
