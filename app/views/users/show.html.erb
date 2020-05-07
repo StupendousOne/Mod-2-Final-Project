@@ -11,7 +11,7 @@
 </ul>
 
 <h1>This is <%=@other_user.show_name%>'s page</h1>
-<h2>These Are <%=@other_user.show_name%>'s Kitchens</h2>
+<h2>These Are <%=@other_user.show_name%>'s Kitchens:</h2>
 <ul>
 <% if @other_user.kitchens.count == 0%>
     <li>This User Doesn't Have Any Kitchens</li> <br>
@@ -24,7 +24,7 @@
 <br>
 </ul>
 
-<h2>These Are <%=@other_user.show_name%>'s Bathrooms</h2>
+<h2>These Are <%=@other_user.show_name%>'s Bathrooms:</h2>
 <ul>
 <% if @other_user.bathrooms.count == 0 %> 
     <li>This User Doesn't Have Any Bathrooms</li> <br>
@@ -36,3 +36,39 @@
 <% end %>
 <br>
 </ul>
+
+<h2>These Are <%=@other_user.show_name%>'s Garages: </h2>
+<ul>
+    <% if @other_user.garages.count == 0 %> 
+        <li>You Dont Have Any Garages. </li>
+    <% else %>
+        <% @other_user.garages.each do |garage|%>
+            <li> <%= link_to "View This Garage", garage_path(garage) %> </li>
+        <% end %>
+    <% end %>
+</ul>
+<br>
+
+<h2>Here Are All Of <%=@other_user.show_name%>'s Bedrooms: </h2>
+<ul>
+    <% if @other_user.bedrooms.count == 0 %> 
+        <li>You Dont Have Any Bedrooms.</li>
+    <% else %>
+        <% @other_user.bedrooms.each do |bedroom|%>
+            <li> <%= link_to "View This Bedroom", bedroom_path(bedroom) %> </li>
+        <% end %>
+    <% end %>
+</ul>
+<br>
+
+<h2>Here Are All Of <%=@other_user.show_name%>'s Other Rooms: </h2>
+<ul>
+    <% if @other_user.other_rooms.count == 0 %> 
+        <li>You Dont Have Any Other Rooms.</li>
+    <% else %>
+        <% @other_user.other_rooms.each do |room|%>
+            <li> <%= link_to "View This Other Room", other_room_path(room) %> </li>
+        <% end %>
+    <% end %>
+</ul>
+<br>
