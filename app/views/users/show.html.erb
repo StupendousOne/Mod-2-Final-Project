@@ -4,6 +4,12 @@
 <% end %>
 </ul>
 
+<ul>
+<% if @other_user.deactivated %>
+    <li>This User's Account Has Been Deactivated</li>
+<% end %>
+</ul>
+
 <h1>This is <%=@other_user.show_name%>'s page</h1>
 <h2>These Are <%=@other_user.show_name%>'s Kitchens</h2>
 <ul>

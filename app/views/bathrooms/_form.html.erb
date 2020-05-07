@@ -8,9 +8,9 @@
 
 <br>
 
-<%= form_for(@bathroom) do |f|%>
+<%= form_with(model: @bathroom) do |f|%>
     <%= f.label :'What is the Size of the Bathroom?'%>
-    <%= f.number_field :size%> <br>
+    <%= f.number_field :size, in: 1.0..10000.0%> <br>
 
     <%= f.label :'Is this Bathroom a Half Bath?'%>
     <%= f.check_box :half%> <br>

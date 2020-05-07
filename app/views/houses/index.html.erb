@@ -3,9 +3,12 @@
 <ul>
     <li>There are <%=house.bathrooms.count%> Bathrooms in This House </li>
     <ul>
+    <%total_bathroom_cost = 0%>
     <%house.bathrooms.each do |bathroom|%>
         <li> This Bathroom is of The <%=bathroom.room_style.style%> style </li>
         <ul>
+        <li> This Bathroom Costs: <%= bathroom.bathroom_cost%> Dollars</li>
+        <% total_bathroom_cost += bathroom.bathroom_cost%>
         <li> The size of this bathrooms is: <%=bathroom.size%> </li>
         <% if bathroom.half?%>
             <li> This is a Half Bath </li>
@@ -14,6 +17,7 @@
         <% end %>
         </ul>
     <% end %>
+    <li> Total Cost Of All Bathrooms In This House: <%= total_bathroom_cost%> Dollars</li>
     <br>
     </ul>
 
