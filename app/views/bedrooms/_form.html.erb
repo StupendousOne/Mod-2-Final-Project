@@ -11,5 +11,10 @@
     <%= f.label :room_style_id, "Style: " %>
     <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style %>
 
+    <%= f.label :house, "Select which houses you would like to add this room to." %>
+    <br>
+    <%= f.collection_check_boxes :house_ids, current_user.houses, :id, :house_name%>
+    <br>
+    <br>
     <%= f.submit %>
 <% end %>

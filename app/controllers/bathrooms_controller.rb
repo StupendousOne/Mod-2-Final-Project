@@ -30,7 +30,13 @@ class BathroomsController < ApplicationController
 
     def update
         @bathroom = Bathroom.find_by(id: params[:id])
-        @bathroom.update(bathroom_params)
+
+        updated_params = bathroom_params
+        house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
+        house_ids.reject{|id| id == ""}
+        updated_params[:house_ids] = @bathroom.get_all_missing_houses(house_ids)
+
+        @bathroom.update(updated_params)
         redirect_to bathroom_path(@bathroom)
     end
 

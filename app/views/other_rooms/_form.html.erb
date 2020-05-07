@@ -9,6 +9,10 @@
 
     <%= f.label :room_style_id, "Style: " %>
     <%= f.collection_select :room_style_id, RoomStyle.all, :id, :style %>
+    <br>
+    <%= f.collection_check_boxes :house_ids, current_user.houses, :id, :house_name%>
+    <br>
+    <br>
 
     <%= f.submit %>
 <% end %>

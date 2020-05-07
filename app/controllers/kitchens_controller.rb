@@ -28,6 +28,11 @@ class KitchensController < ApplicationController
     end
 
     def edit
+        updated_params = kitchen_params
+        house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
+        house_ids.reject{|id| id == ""}
+        updated_params[:house_ids] = @kitchen.get_all_missing_houses(house_ids)
+
         if current_user != @kitchen.user
             flash.alert = "Cannot Edit Other User's Pages"
             redirect_to kitchen_path(@kitchen)

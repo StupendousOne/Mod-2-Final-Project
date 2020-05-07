@@ -12,7 +12,12 @@ class GaragesController < ApplicationController
     end
 
     def update
-        if(@garage.update(garage_params))
+        updated_params = garage_params
+        house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
+        house_ids.reject{|id| id == ""}
+        updated_params[:house_ids] = @garage.get_all_missing_houses(house_ids)
+
+        if(@garage.update(updated_params))
             flash[:success] = "Garage Updated"
             redirect_to garage_path(@garage)
         else
@@ -53,6 +58,6 @@ class GaragesController < ApplicationController
     end
     
     def garage_params
-        params.require(:garage).permit(:size, :room_style_id, :user_id)
+        params.require(:garage).permit(:size, :room_style_id, :user_id, house_ids:[])
     end
 end
