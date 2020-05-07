@@ -6,6 +6,34 @@ class Garage < ApplicationRecord
 
     validates :size, :room_style_id, presence: true
 
+    def self.analytics_header
+        "Garage Analytics"
+    end
+
+    def self.avg_cost
+        
+    end
+
+    def self.avg_size
+
+    end
+
+    def self.highest_cost
+
+    end
+
+    def self.largest
+
+    end
+    
+    def self.lowest_cost
+
+    end
+
+    def self.smallest
+
+    end
+
     def get_all_missing_houses(houses)
         new_house_id_list = []
         
