@@ -6,8 +6,10 @@ class User < ApplicationRecord
     has_many :bedrooms
     has_many :kitchens
     has_many :other_rooms
+    has_many :room_styles
 
-    validates :password, :name, :email, presence: true
+    validates :name, :email, presence: true
+    validates :password, presence: true, if: :password
     validates :name, uniqueness: true 
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 end

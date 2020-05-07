@@ -12,7 +12,12 @@ class OtherRoomsController < ApplicationController
     end
 
     def update
-        if(@other_room.update(other_room_params))
+        updated_params = other_room_params
+        house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
+        house_ids.reject{|id| id == ""}
+        updated_params[:house_ids] = @other_room.get_all_missing_houses(house_ids)
+
+        if(@other_room.update(updated_params))
             flash[:success] = "OtherRoom Updated"
             redirect_to other_room_path(@other_room)
         else
@@ -53,6 +58,6 @@ class OtherRoomsController < ApplicationController
     end
     
     def other_room_params
-        params.require(:other_room).permit(:size, :room_style_id, :room_type, :user_id)
+        params.require(:other_room).permit(:size, :room_style_id, :room_type, :user_id, house_ids:[])
     end
 end

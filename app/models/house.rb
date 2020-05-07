@@ -10,4 +10,8 @@ class House < ApplicationRecord
     has_many :housebedrooms
     has_many :bedrooms, through: :housebedrooms
     belongs_to :user
+
+    def house_name
+        "House no. #{self.id}"
+    end
 end
