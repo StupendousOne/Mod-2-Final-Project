@@ -14,6 +14,7 @@ TODO:
 * [ ] House cost
 * [X] Room Style Desc
 * [ ] Uniform layout
+* [ ] Hot Bar Navigation to all Index pages
 * [ ] Analytics(to be split further)
     * [ ] Analytics home page
     * [ ] House Analytics Page
