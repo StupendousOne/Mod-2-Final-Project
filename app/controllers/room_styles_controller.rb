@@ -53,6 +53,6 @@ class RoomStylesController < ApplicationController
     end
     
     def room_style_params
-        params.require(:room_style).permit(:style, :cost, :user_id)
+        params.require(:room_style).permit(:style, :cost, :desc, :user_id)
     end
 end

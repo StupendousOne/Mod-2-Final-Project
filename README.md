@@ -12,7 +12,7 @@ TODO:
 * [X] Input Type Validation in forms
 * [X] Authorizing User to only edit his houses/rooms/styles
 * [ ] House cost
-* [ ] Room Style Desc
+* [X] Room Style Desc
 * [ ] Uniform layout
 * [ ] Analytics(to be split further)
 * [ ] Favorite houses

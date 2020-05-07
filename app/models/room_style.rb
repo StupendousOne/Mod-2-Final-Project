@@ -6,7 +6,7 @@ class RoomStyle < ApplicationRecord
     has_many :other_rooms
     belongs_to :user, optional: true
 
-    validates :style, :cost, presence: true
+    validates :style, :cost, :desc, presence: true
 
     def all_rooms
         rooms = []

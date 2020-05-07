@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_202737) do
+ActiveRecord::Schema.define(version: 2020_05_07_194519) do
 
   create_table "bathrooms", force: :cascade do |t|
     t.integer "size"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_202737) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "desc"
     t.index ["user_id"], name: "index_room_styles_on_user_id"
   end
 

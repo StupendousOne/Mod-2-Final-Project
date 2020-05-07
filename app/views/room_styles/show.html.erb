@@ -7,13 +7,14 @@
 <% end %>
 
 <ul>
+    Description: <%= @room_style.desc %> <br>
     Cost: <%= @room_style.cost.round(2) %>x <br> 
     Rooms with this style: 
         <ul>
             <% @room_style.all_rooms.each do |room| %>
                 <li> 
                     Room No: <%= link_to "#{room.id}", room %> 
-                    Room Type: <%= room.class == "OtherRoom"? room.room_type : room.class %> 
+                    Room Type: <%= room.class.to_s == "OtherRoom"? room.room_type : room.class %> 
                 </li>
             <% end %>
         </ul>

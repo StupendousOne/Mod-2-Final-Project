@@ -25,18 +25,17 @@ House.destroy_all
 end
 
 styles = [
-    "modern",
-    "contemporary",
-    "minimalist",
-    "industrial",
-    "mid-century modern",
-    "scandinavian",
-    "traditional",
-    "transitional"
+    {style: "modern", desc: "A modern theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "contemporary", desc: "A contemporary theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "minimalist", desc: "A minimalist theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "industrial", desc: "A industrial theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "scandanavian", desc: "A scandanavian theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "traditional", desc: "A traditional theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "transitional", desc: "A transitional theme",cost: rand(0.5..5.0), user_id: User.all.sample.id},
+    {style: "mid-century modern", desc: "A mid-century modern theme",cost: rand(0.5..5.0), user_id: User.all.sample.id}
 ]
 
-
-styles.each { |s|  RoomStyle.create({style: s, cost: rand(0.5..5.0), user_id: User.all.sample.id}) }
+styles.each { |s|  RoomStyle.create(s) }
 
 20.times do
     Bedroom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, user_id: User.all.sample.id})
@@ -67,7 +66,7 @@ other_room_type = [
     OtherRoom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample, user_id: User.all.sample.id})
 end
 
-60.times do
+20.times do
     Housebedroom.create!({house_id: House.all.sample.id, bedroom_id: Bedroom.all.sample.id})
     Housebathroom.create!({house_id: House.all.sample.id, bathroom_id: Bathroom.all.sample.id})
     Housekitchen.create!({house_id: House.all.sample.id, kitchen_id: Kitchen.all.sample.id})
