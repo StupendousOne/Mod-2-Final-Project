@@ -23,8 +23,7 @@ class KitchensController < ApplicationController
     end
 
     def show
-        @edit_b = is_current_user
-        @delete_b = is_current_user
+        @current_user_boolean = is_current_user
     end
 
     def edit

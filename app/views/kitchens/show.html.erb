@@ -18,10 +18,8 @@ and is <%=@kitchen.size%> square feet. </h2>
 
 <%= link_to "Make a new Kitchen", new_kitchen_path%> <br>
 
-<% if @edit_b%>
+<% if @current_user_boolean %>
     <%= link_to "Edit This Kitchen", edit_kitchen_path(@kitchen)%> <br>
-<% end %>
-<% if @delete_b %>
     <%= link_to "Delete This Kitchen", kitchen_path(@kitchen), method: :delete%> <br>
 <% end %>
 
