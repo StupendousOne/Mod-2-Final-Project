@@ -26,5 +26,60 @@
     <% end %>
 </ul>
 <br>
+
+<h2>Here Are All Of Your Bathrooms: </h2>
+<ul>
+    <% if current_user.bathrooms.count == 0 %> 
+        <li>You Dont Have Any Bathrooms. <%= link_to "Click Here To Make A New One", new_bathroom_path %> </li>
+    <% else %>
+        <% current_user.bathrooms.each do |bathroom|%>
+            <li> <%= link_to "View This Bathroom", bathroom_path(bathroom) %> </li>
+        <% end %>
+        <br>
+        <%= link_to "Create A New Bathroom", new_bathroom_path%>
+    <% end %>
+</ul>
+<br>
+
+<h2>Here Are All Of Your Garages: </h2>
+<ul>
+    <% if current_user.garages.count == 0 %> 
+        <li>You Dont Have Any Garages. <%= link_to "Click Here To Make A New One", new_garage_path %> </li>
+    <% else %>
+        <% current_user.garages.each do |garage|%>
+            <li> <%= link_to "View This Garage", garage_path(garage) %> </li>
+        <% end %>
+        <br>
+        <%= link_to "Create A New Garage", new_garage_path%>
+    <% end %>
+</ul>
+<br>
+
+<h2>Here Are All Of Your Bedrooms: </h2>
+<ul>
+    <% if current_user.bedrooms.count == 0 %> 
+        <li>You Dont Have Any Bedrooms. <%= link_to "Click Here To Make A New One", new_bedroom_path %> </li>
+    <% else %>
+        <% current_user.bedrooms.each do |bedroom|%>
+            <li> <%= link_to "View This Bedroom", bedroom_path(bedroom) %> </li>
+        <% end %>
+        <br>
+        <%= link_to "Create A New Bedroom", new_bedroom_path%>
+    <% end %>
+</ul>
+<br>
+
+<h2>Here Are All Of Your Other Rooms: </h2>
+<ul>
+    <% if current_user.other_rooms.count == 0 %> 
+        <li>You Dont Have Any Other Rooms. <%= link_to "Click Here To Make A New One", new_other_room_path %> </li>
+    <% else %>
+        <% current_user.other_rooms.each do |room|%>
+            <li> <%= link_to "View This Other Room", other_room_path(room) %> </li>
+        <% end %>
+        <br>
+        <%= link_to "Create A New Other Room", new_other_room_path%>
+    <% end %>
+</ul>
 <br>
 <%= link_to "Click Here To Delete Your Account", user_path(current_user), method: :delete%>
