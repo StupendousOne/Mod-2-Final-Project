@@ -12,7 +12,12 @@ class BedroomsController < ApplicationController
     end
 
     def update
-        if(@bedroom.update(bedroom_params))
+        updated_params = bedroom_params
+        house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
+        house_ids.reject{|id| id == ""}
+        updated_params[:house_ids] = @bedroom.get_all_missing_houses(house_ids)
+        
+        if(@bedroom.update(updated_params))
             flash[:success] = "Bedroom Updated"
             redirect_to bedroom_path(@bedroom)
         else
@@ -26,13 +31,13 @@ class BedroomsController < ApplicationController
     end
 
     def create
-        room = Bedroom.new(bedroom_params)
-        if(room.valid?)
-            room.save
-            flash[:success] = "Bedroom No. #{room.id} created"
-            redirect_to bedroom_path(room)
+        @bedroom = Bedroom.new(bedroom_params)
+        if(@bedroom.valid?)
+            @bedroom.save
+            flash[:success] = "Bedroom No. #{@bedroom.id} created"
+            redirect_to bedroom_path(@bedroom)
         else
-            flash[:errors] = room.errors.full_messages
+            flash[:errors] = @bedroom.errors.full_messages
             redirect_to new_bedroom_path
         end
     end
@@ -53,6 +58,6 @@ class BedroomsController < ApplicationController
     end
     
     def bedroom_params
-        params.require(:bedroom).permit(:size, :room_style_id, :user_id)
+        params.require(:bedroom).permit(:size, :room_style_id, :user_id, house_ids:[])
     end
 end
