@@ -9,5 +9,5 @@ class House < ApplicationRecord
     has_many :kitchens, through: :housekitchens
     has_many :housebedrooms
     has_many :bedrooms, through: :housebedrooms
-    belongs_to :user
+    belongs_to :user, optional: true
 end

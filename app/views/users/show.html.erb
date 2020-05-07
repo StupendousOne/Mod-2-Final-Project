@@ -8,10 +8,10 @@
 <h2>These Are <%=@other_user.show_name%>'s Kitchens</h2>
 <ul>
 <% if @other_user.kitchens.count == 0%>
-    <li>This User Doesn't Have Any Kitchens</li>
+    <li>This User Doesn't Have Any Kitchens</li> <br>
 <% else %>
     <% @other_user.kitchens.each do |kitchen|%>
-        <%= link_to "Click Here To View The Kitchen", kitchen_path(kitchen)%>
+        <%= link_to "Click Here To View The Kitchen", kitchen_path(kitchen)%> <br>
     <% end %>
     <br>
 <% end %>

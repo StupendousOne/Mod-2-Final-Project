@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized
-        if !logged_in?
+        if !logged_in? || @user.deactivated
             flash[:error] = 'You must login to see this page.'
             redirect_to login_path
         else

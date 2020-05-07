@@ -5,7 +5,10 @@ class SessionsController < ApplicationController
     
     def create
         @user = User.find_by(name: params[:name])
-        if @user && @user.authenticate(params[:password])
+        if @user.deactivated == true
+            flash[:alert] = "User Account Has Been Deleted"
+            redirect_to login_path
+        elsif @user && @user.authenticate(params[:password]) && @user.deactivated != true
             session[:user_id] = @user.id
             flash[:alert] = "User Successfully Signed In"
             redirect_to houses_path
@@ -18,6 +21,6 @@ class SessionsController < ApplicationController
     def destroy
         session[:user_id] = nil
         flash[:success] = "Successfully Logged Out!"
-        redirect_to '/login'
+        redirect_to '/'
     end
 end

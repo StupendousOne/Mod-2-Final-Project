@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :find_user, only:[:show, :private_page]
+    before_action :find_user, only:[:show, :private_page, :destroy]
     before_action :is_current_user, only: [:edit]
 
     def new
@@ -32,13 +32,20 @@ class UsersController < ApplicationController
     end
 
     def private_page
+    end
 
+    def destroy
+        @user.deactivated = true
+        session[:user_id] = nil
+        @user.save!
+        byebug
+        redirect_to '/'
     end
 
     private
 
         def user_params
-            params.require(:user).permit(:show_name, :name, :email, :password, :password_confirmation)
+            params.require(:user).permit(:show_name, :name, :email, :password, :password_confirmation, :deactivated)
         end
 
         def find_user

@@ -2,5 +2,5 @@ class Bathroom < ApplicationRecord
     has_many :housebathrooms
     has_many :houses, through: :housebathrooms
     belongs_to :room_style
-    belongs_to :user
+    belongs_to :user, optional: true
 end
