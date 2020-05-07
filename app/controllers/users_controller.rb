@@ -38,7 +38,6 @@ class UsersController < ApplicationController
         @user.deactivated = true
         session[:user_id] = nil
         @user.save!
-        byebug
         redirect_to '/'
     end
 

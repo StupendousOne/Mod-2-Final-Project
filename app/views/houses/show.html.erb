@@ -1,0 +1,82 @@
+<ul>
+<h1>This is the House you Selected</h1>
+<li>There are <%=@house.bathrooms.count%> Bathrooms in This House </li>
+    <br>
+    <ul>
+    <%total_bathroom_cost = 0%>
+    <%@house.bathrooms.each do |bathroom|%>
+        <li> This Bathroom is of The <%=bathroom.room_style.style%> style </li>
+        <ul>
+        <li> This Bathroom Costs: <%= bathroom.bathroom_cost%> Dollars</li>
+        <% total_bathroom_cost += bathroom.bathroom_cost%>
+        <li> The size of this bathrooms is: <%=bathroom.size%> square feet</li>
+        <% if bathroom.half?%>
+            <li> This is a Half Bath </li>
+        <% else%>
+            <li>This is a Full Bath </li>
+        <% end %>
+        <li> <%= link_to "View This Bathroom", bathroom_path(bathroom) %> </li>
+        </ul>
+    <% end %>
+    <br>
+    <li> Total Cost Of All Bathrooms In This House: <%= total_bathroom_cost%> Dollars</li>
+    <br>
+    </ul>
+
+<li>There are <%=@house.garages.count%> Garages At This House </li>
+    <br>
+    <ul>
+    <% total_garage_cost = 0%>
+    <%@house.garages.each do |garage|%>
+        <li> This Garage is of The <%=garage.room_style.style%> Style </li>
+        <ul>
+        <li> This Garage Costs: <%= garage.garage_cost%> Dollars</li>
+        <% total_garage_cost += garage.garage_cost%>
+        <li> The size of this garage is: <%=garage.size%> square feet</li>
+        </ul>
+    <% end %>
+    <br>
+    <li> Total Cost Of All Garages In This House: <%= total_garage_cost.round(2) %> </li>
+    <br>
+    </ul>
+
+    <li>There are <%=@house.bedrooms.count%> Bedrooms In This House</li>
+    <ul>
+    <%@house.bedrooms.each do |bedroom|%>
+        <li>This Bedroom is of the <%=bedroom.room_style.style%> style</li>
+        <ul>
+        <li>This Bedroom is <%=bedroom.size%> </li>
+        </ul>
+        <% end %>
+  
+    </ul>
+
+<li>There are <%=@house.kitchens.count%> Kitchens in this House</li>
+    <br>
+    <ul>
+    <% total_kitchen_cost = 0 %>
+    <%@house.kitchens.each do |kitchen|%> 
+        <li>This Kitchen is of the <%=kitchen.room_style.style%> style</li>
+        <ul>
+        <li>This Kitchen Costs: <%= kitchen.kitchen_cost %> Dollars</li>
+        <% total_kitchen_cost += kitchen.kitchen_cost %>
+        <li>This Kitchen is <%=kitchen.size%> </li>
+        <li> <%= link_to "View This Kitchen", kitchen_path(kitchen) %> </li>
+        </ul>
+        <% end %>
+    <br>
+    <li> Total Cost Of All Kitchens In This House: <%= total_kitchen_cost.round(2) %> </li>
+    <br>
+    </ul>
+
+    <li>There are <%=@house.other_rooms.count%> Other rooms in this House</li>
+    <ul>
+    <%@house.other_rooms.each do |room|%>
+        <li>This room is a <%=room.room_type%> and is of the <%=room.room_style.style%> style </li>
+        <ul>
+            <li>This room is <%=room.size%> </li>
+        </ul>
+        <% end %>
+        <br>
+    </ul>
+</ul>

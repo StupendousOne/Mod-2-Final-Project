@@ -6,6 +6,10 @@ class Kitchen < ApplicationRecord
 
     validates :size, presence: true
 
+    def kitchen_cost
+        kitchen_cost = (self.size * self.room_style.cost * 10).round(2)
+    end
+
     def get_all_missing_houses(houses)
         new_house_id_list = []
         

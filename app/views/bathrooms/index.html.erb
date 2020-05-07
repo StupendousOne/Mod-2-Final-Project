@@ -6,11 +6,8 @@
 
 <h1>Here are all the Bathrooms</h1>
 <%@bathrooms.each do |bathroom|%>
-    <%= bathroom.size %> in square feet. <br>
-    <%= bathroom.half %> <br>
-    <%= bathroom.room_style.style%> <br>
     <%= link_to "Click Here to View This Bathroom", bathroom_path(bathroom)%> <br>
-    +++++++++++ <br>
+    <br>
 <% end %>
 
 <%= link_to "Make a New Bathroom", new_bathroom_path%> <br>

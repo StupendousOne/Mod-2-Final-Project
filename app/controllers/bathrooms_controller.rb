@@ -1,6 +1,8 @@
 class BathroomsController < ApplicationController
 
     before_action :authorized
+    before_action :find_bathroom, only: [:show, :edit, :update, :destroy]
+    before_action :is_current_user, only: [:show]
 
     def index
         @bathrooms = Bathroom.all
@@ -16,7 +18,7 @@ class BathroomsController < ApplicationController
     end
 
     def show
-        @bathroom = Bathroom.find_by(id: params[:id])
+        @current_user_boolean = is_current_user
         if @bathroom.half
             @half = "This is a half bath so there is no shower"
         else
@@ -25,12 +27,13 @@ class BathroomsController < ApplicationController
     end
 
     def edit
-        @bathroom = Bathroom.find_by(id: params[:id])
+        if current_user != @bathroom.user
+            flash.alert = "Cannot Edit Other User's Pages"
+            redirect_to bathroom_path(@bathroom)
+        end
     end
 
     def update
-        @bathroom = Bathroom.find_by(id: params[:id])
-
         updated_params = bathroom_params
         house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
         house_ids.reject{|id| id == ""}
@@ -41,14 +44,18 @@ class BathroomsController < ApplicationController
     end
 
     def destroy
-        @bathroom = Bathroom.find_by(id: params[:id])
-        begin
-            @bathroom.destroy
-        rescue => exception
-            flash.alert = "Deletion Failed"
-            redirect_to bathrooms_path
+        if current_user == @bathroom.user
+            begin
+                @bathroom.destroy
+            rescue => exception
+                flash.alert = "Deletion Failed"
+                redirect_to bathrooms_path
+            else
+                flash.alert = "Deletion Successful"
+                redirect_to bathrooms_path
+            end
         else
-            flash.alert = "Deletion Successful"
+            flash.alert = "Deletion Failed. Not Your Bathroom."
             redirect_to bathrooms_path
         end
     end
@@ -57,5 +64,13 @@ class BathroomsController < ApplicationController
 
         def bathroom_params
             params.require(:bathroom).permit(:size, :half, :room_style_id)
+        end
+
+        def find_bathroom
+            @bathroom = Bathroom.find_by(id: params[:id])
+        end
+
+        def is_current_user
+            @bathroom.user == current_user
         end
 end

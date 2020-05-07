@@ -1,6 +1,7 @@
 class HousesController < ApplicationController
     
     before_action :authorized
+    before_action :find_house, only: [:show, :edit, :update]
     
     def index
         @houses = House.all
@@ -24,4 +25,10 @@ class HousesController < ApplicationController
 
     def destroy
     end
+
+    private
+
+        def find_house
+            @house = House.find_by(id: params[:id])
+        end
 end
