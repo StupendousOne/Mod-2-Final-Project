@@ -20,6 +20,8 @@
                 </li>
             <% end %>
         </ul>
+        <br>
+    Designer: <%= link_to " #{@bedroom.user.name}", user_path(@bedroom.user) %>
 </ul>
 <br><br>
 <% if @bedroom.user == current_user %>

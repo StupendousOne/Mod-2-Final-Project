@@ -14,7 +14,10 @@
             Room Style: 
             <%= link_to " #{other_room.room_style.style}", room_style_path(other_room.room_style) %>
             Room Cost:
-            <%= " #{other_room.cost}"%>
+            <%= " #{other_room.cost}" %>
+            <br>
+            Room Designer:
+            <%= link_to " #{other_room.user.name}", user_path(other_room.user) %>
         </ul>
     </li>
     <br>

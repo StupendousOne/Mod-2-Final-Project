@@ -18,6 +18,9 @@
             <%= link_to " #{garage.room_style.style}", room_style_path(garage.room_style) %>
             Room Cost:
             <%= " #{garage.cost}" %>
+            <br>
+            Room Designer:
+            <%= link_to " #{garage.user.name}", user_path(garage.user) %>
         </ul>
     </li>
     <br>

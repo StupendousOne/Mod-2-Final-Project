@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     before_action :find_user, only:[:show, :private_page, :destroy]
     before_action :is_current_user, only: [:edit]
 
+    def def index
+    end
+
     def new
         @user = User.new
         render :layout => false

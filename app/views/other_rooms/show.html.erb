@@ -20,6 +20,8 @@
             <% end %>
         </ul>
     Cost: <%= " #{@other_room.cost}" %>
+    <br>
+    Designer: <%= link_to " #{@other_room.user.name}", user_path(@other_room.user) %>
 </ul>
 <br><br>
 <% if @other_room.user == current_user %>
