@@ -1,0 +1,19 @@
+<h2> Users </h2>
+
+<ul>
+    <% User.all.each do |user| %>
+        <%= link_to  user.name, user_path(user) %> <br>
+        <ul>
+            <li>
+                Houses: <br>
+            </li>
+            <ul>
+                <% user.houses.each do |house| %>
+                    <li>
+                        <%= link_to  "House no. #{house.id}", house_path(house) %>
+                    </li>
+                <% end %>
+            </ul>
+        </ul>
+    <% end %>
+</ul>

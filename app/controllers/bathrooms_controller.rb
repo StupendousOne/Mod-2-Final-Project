@@ -39,8 +39,13 @@ class BathroomsController < ApplicationController
         house_ids.reject{|id| id == ""}
         updated_params[:house_ids] = @bathroom.get_all_missing_houses(house_ids)
 
-        @bathroom.update(updated_params)
-        redirect_to bathroom_path(@bathroom)
+        if(@bathroom.update(updated_params))
+            flash[:success] = "Bathroom Updated"
+            redirect_to bathroom_path(@bathroom)
+        else
+            flash[:errors] = @bathroom.errors.full_messages
+            redirect_to edit_bathroom_path(@bathroom)
+        end
     end
 
     def destroy
@@ -63,7 +68,7 @@ class BathroomsController < ApplicationController
     private
 
         def bathroom_params
-            params.require(:bathroom).permit(:size, :half, :room_style_id)
+            params.require(:bathroom).permit(:size, :half, :room_style_id, :user_id, house_ids:[])
         end
 
         def find_bathroom

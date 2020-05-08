@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 #Users
-  resources :users, only: [:show, :edit, :update, :new, :create, :destroy]
+  resources :users, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   get '/signup' => 'users#new'
   get 'users/private_page' => 'users#private_page', as: 'private_page'
 #Sessions

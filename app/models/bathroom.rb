@@ -51,7 +51,7 @@ class Bathroom < ApplicationRecord
         #find houses that need to be disconnected
         houses_to_remove = []
         
-        hhouses[:current_user_houses].each do |house|
+        houses[:current_user_houses].each do |house|
             if(!houses[:update].include? house.id.to_s)
                 houses_to_remove << house.id.to_s 
             end
