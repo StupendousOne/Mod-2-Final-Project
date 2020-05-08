@@ -137,11 +137,14 @@ ActiveRecord::Schema.define(version: 2020_05_07_194519) do
   end
 
   add_foreign_key "bathrooms", "room_styles"
-  add_foreign_key "bathrooms", "users", on_delete: :cascade
+  add_foreign_key "bathrooms", "users"
+  add_foreign_key "bathrooms", "users"
   add_foreign_key "bedrooms", "room_styles"
-  add_foreign_key "bedrooms", "users", on_delete: :cascade
+  add_foreign_key "bedrooms", "users"
+  add_foreign_key "bedrooms", "users"
   add_foreign_key "garages", "room_styles"
-  add_foreign_key "garages", "users", on_delete: :cascade
+  add_foreign_key "garages", "users"
+  add_foreign_key "garages", "users"
   add_foreign_key "housebathrooms", "bathrooms"
   add_foreign_key "housebathrooms", "houses"
   add_foreign_key "housebedrooms", "bedrooms"
@@ -152,10 +155,14 @@ ActiveRecord::Schema.define(version: 2020_05_07_194519) do
   add_foreign_key "housekitchens", "kitchens"
   add_foreign_key "houseothers", "houses"
   add_foreign_key "houseothers", "other_rooms"
-  add_foreign_key "houses", "users", on_delete: :cascade
+  add_foreign_key "houses", "users"
+  add_foreign_key "houses", "users"
   add_foreign_key "kitchens", "room_styles"
-  add_foreign_key "kitchens", "users", on_delete: :cascade
+  add_foreign_key "kitchens", "users"
+  add_foreign_key "kitchens", "users"
   add_foreign_key "other_rooms", "room_styles"
-  add_foreign_key "other_rooms", "users", on_delete: :cascade
-  add_foreign_key "room_styles", "users", on_delete: :cascade
+  add_foreign_key "other_rooms", "users"
+  add_foreign_key "other_rooms", "users"
+  add_foreign_key "room_styles", "users"
+  add_foreign_key "room_styles", "users"
 end
