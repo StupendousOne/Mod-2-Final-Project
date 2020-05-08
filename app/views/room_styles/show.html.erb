@@ -13,7 +13,7 @@
         <ul>
             <% @room_style.all_rooms.each do |room| %>
                 <li> 
-                    Room No: <%= link_to "#{room.id}", room %> 
+                    <%= link_to "Room No: #{room.id}", room %> 
                     Room Type: <%= room.class.to_s == "OtherRoom"? room.room_type : room.class %> 
                 </li>
             <% end %>

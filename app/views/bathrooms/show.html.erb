@@ -14,7 +14,7 @@ This Bathroom Costs: $<%= @bathroom.cost %></h2>
 
 <h3>This Bathroom is part of <%=@bathroom.houses.count%> houses at the moment.</h3>
 <% @bathroom.houses.each do |house|%>
-    <%= link_to "View This House", house_path(house)%> <br>
+    <%= link_to "House no. #{house.id}", house_path(house)%> <br>
 <% end %>
 <br>
 

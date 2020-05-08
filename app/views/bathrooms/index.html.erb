@@ -6,7 +6,7 @@
 
 <h1>Here are all the Bathrooms</h1>
 <%@bathrooms.each do |bathroom|%>
-    <%= link_to "Click Here to View This Bathroom", bathroom_path(bathroom)%> <br>
+    <%= link_to "Click Here to View Bathroom #{bathroom.id}", bathroom_path(bathroom)%> <br>
     <br>
 <% end %>
 

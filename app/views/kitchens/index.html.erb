@@ -8,7 +8,7 @@
 <%@kitchens.each do |kitchen|%>
     <%= kitchen.size %> in square feet. <br>
     <%= kitchen.room_style.style%> <br>
-    <%= link_to "Click Here to View This Kitchen", kitchen_path(kitchen)%> <br>
+    <%= link_to "Click Here to View Kitchen no. #{kitchen.id}", kitchen_path(kitchen)%> <br>
     +++++++++++ <br>
 <% end %>
 

@@ -18,3 +18,9 @@
 
     <%= f.submit %>
 <% end %>
+<br>
+<% if @kitchen.persisted? %>
+    <%= link_to  "Back", kitchen_path(@kitchen) %>
+<% else %>
+    <%= link_to  "Back", kitchens_path %>
+<% end %>

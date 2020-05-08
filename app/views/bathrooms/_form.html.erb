@@ -19,4 +19,10 @@
 
     <%= f.submit %>
 <% end %>
+<br>
+<% if @bathroom.persisted? %>
+    <%= link_to  "Back", bathroom_path(@bathroom) %>
+<% else %>
+    <%= link_to  "Back", bathrooms_path %>
+<% end %>
 
