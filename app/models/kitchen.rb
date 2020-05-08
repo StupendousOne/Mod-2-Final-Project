@@ -6,8 +6,38 @@ class Kitchen < ApplicationRecord
 
     validates :size, presence: true
 
-    def kitchen_cost
+    def cost
         kitchen_cost = (self.size * self.room_style.cost * 10).round(2)
+    end
+
+    def name
+        "Kitchen"
+    end
+
+    def self.avg_cost
+        cost_arr = self.all.map {|i| i.cost}
+        cost_arr.sum/cost_arr.length
+    end
+
+    def self.avg_size
+        size_arr = self.all.map {|i| i.size}
+        size_arr.sum/size_arr.length
+    end
+
+    def self.highest_cost
+        self.all.max{|a,b| a.cost <=> b.cost}.cost
+    end
+
+    def self.largest
+        self.all.max{|a,b| a.size <=> b.size}.size
+    end
+    
+    def self.lowest_cost
+        self.all.min{|a,b| a.cost <=> b.cost}.cost
+    end
+
+    def self.smallest
+        self.all.min{|a,b| a.size <=> b.size}.size
     end
 
     def get_all_missing_houses(houses)

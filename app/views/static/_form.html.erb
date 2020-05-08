@@ -1,5 +1,20 @@
-<h2> <%= @class.name_for_analytics %> </h2>
+<h2> <%= "#{@class.name} Analytics" %> </h2>
 
+<br>
 <ul>
-    <%= @class.avg_cost %>
+    <% if(@class.to_s == "House") %>
+        <li> The average No. of rooms in a <%= "#{@class.name} is: #{@class.avg_room_count}" %> </li>
+        <li> The most rooms in a <%= "#{@class.name} is: #{@class.most_rooms}" %> </li>   
+        <li> The least rooms in a <%= "#{@class.name} is: #{@class.least_rooms}" %> </li>   
+    <% end %>
+    <li> The average cost of a(n) <%= "#{@class.name} is: #{@class.avg_cost}" %> </li>
+    <li> The average size of a(n) <%= "#{@class.name} is: #{@class.avg_size}" %> </li>
+    <li> The highest cost of a(n) <%= "#{@class.name} is: #{@class.highest_cost}" %> </li>
+    <li> The largest <%= "#{@class.name} is: #{@class.largest} sqft" %> </li>
+    <li> The lowest cost of a(n) <%= "#{@class.name} is: #{@class.lowest_cost}" %> </li>
+    <li> The smallest <%= "#{@class.name} is: #{@class.smallest} sqft" %> </li>
 </ul>
+
+<br>
+<br>
+<h4> <%= link_to  "Analytics Home", analytics_path %> </h4>
