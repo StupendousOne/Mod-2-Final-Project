@@ -4,13 +4,43 @@ class Bathroom < ApplicationRecord
     belongs_to :room_style
     belongs_to :user, optional: true
 
-    def bathroom_cost
+    def cost
         if self.half?
             half_cost = 0.75
         else
             half_cost = 1.25
         end
     bathroom_cost = (self.size * self.room_style.cost * 10 * half_cost).round(2)
+    end
+
+    def name
+        "Bathroom"
+    end
+
+    def self.avg_cost
+        cost_arr = self.all.map {|i| i.cost}
+        cost_arr.sum/cost_arr.length
+    end
+
+    def self.avg_size
+        size_arr = self.all.map {|i| i.size}
+        size_arr.sum/size_arr.length
+    end
+
+    def self.highest_cost
+        self.all.max{|a,b| a.cost <=> b.cost}.cost
+    end
+
+    def self.largest
+        self.all.max{|a,b| a.size <=> b.size}.size
+    end
+    
+    def self.lowest_cost
+        self.all.min{|a,b| a.cost <=> b.cost}.cost
+    end
+
+    def self.smallest
+        self.all.min{|a,b| a.size <=> b.size}.size
     end
 
     def get_all_missing_houses(houses)

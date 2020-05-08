@@ -12,7 +12,7 @@
 and is <%=@kitchen.size%> square feet. </h2>
 <h3>This Kitchen is part of <%=@kitchen.houses.count%> houses at the moment.</h3>
 <% @kitchen.houses.each do |house|%>
-    <%= link_to "View This House", house_path(house)%> <br>
+    <%= link_to "View House no. #{house.id}", house_path(house)%> <br>
 <% end %>
 <br>
 

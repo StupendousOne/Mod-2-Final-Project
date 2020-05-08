@@ -10,11 +10,32 @@
   </head>
 
   <body>
-    <%= link_to "Click Here to Log Out", logout_path%>
+      <%= link_to "Log Out", logout_path%>
+    <span style="margin-left: 1em;">
     <%= link_to current_user.show_name, user_path(current_user)%>
-    <%= link_to "View All Houses", houses_path%>
-    <%= link_to "View All Kitchens", kitchens_path%>
-    <%= link_to "View All Bathrooms", bathrooms_path%>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Houses", houses_path%>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Kitchens", kitchens_path%>
+    </span>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Bathrooms", bathrooms_path%>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Garages", garages_path%>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Bedrooms", bedrooms_path%>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Other Rooms", other_rooms_path%>
+    </span>
+    <span style="margin-left: 1em;">
+      <%= link_to "Room Styles", room_styles_path%>
+    </span>
 
     <%= yield %>
   </body>

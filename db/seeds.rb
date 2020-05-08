@@ -66,7 +66,7 @@ other_room_type = [
     OtherRoom.create!({size: rand(25..100), room_style_id: RoomStyle.all.sample.id, room_type: other_room_type.sample, user_id: User.all.sample.id})
 end
 
-20.times do
+15.times do
     Housebedroom.create!({house_id: House.all.sample.id, bedroom_id: Bedroom.all.sample.id})
     Housebathroom.create!({house_id: House.all.sample.id, bathroom_id: Bathroom.all.sample.id})
     Housekitchen.create!({house_id: House.all.sample.id, kitchen_id: Kitchen.all.sample.id})

@@ -1,4 +1,4 @@
 <h1>Here Are All The Houses</h1>
 <%@houses.each do |house|%>
-    <%= link_to "View This House", house_path(house)%> <br> <br>
+    <%= link_to "View House no. #{house.id}", house_path(house)%> <br> <br>
 <% end %>

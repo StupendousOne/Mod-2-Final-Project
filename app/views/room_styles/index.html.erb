@@ -4,6 +4,11 @@
   <% @room_styles.each do |style| %>
     <li>
       <%= link_to style.style, room_style_path(style) %>
+      <ul>
+        <li>
+          "Designer: <%= link_to  " #{style.user.name}", user_path(style.user) %>
+        </li>
+      </ul>
     </li>
     <br>
   <% end %>

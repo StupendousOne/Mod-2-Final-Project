@@ -19,8 +19,11 @@
                 </li>
             <% end %>
         </ul>
+    Cost: <%= " #{@other_room.cost}" %>
+    <br>
+    Designer: <%= link_to " #{@other_room.user.name}", user_path(@other_room.user) %>
 </ul>
 <br><br>
 <% if @other_room.user == current_user %>
-    <%= link_to "Edit Bedroom No.#{@other_room.id}", edit_other_room_path(@other_room) %>
+    <%= link_to "Edit #{@other_room.room_type}", edit_other_room_path(@other_room) %>
 <% end %>

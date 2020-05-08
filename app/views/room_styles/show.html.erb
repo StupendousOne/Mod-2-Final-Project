@@ -7,13 +7,15 @@
 <% end %>
 
 <ul>
-    Description: <%= @room_style.desc %> <br>
-    Cost: <%= @room_style.cost.round(2) %>x <br> 
+    Description: <%= " #{@room_style.desc}" %> <br>
+    Cost: <%= " #{@room_style.cost.round(2)}" %>x <br> 
+    Designer: <%= link_to  " #{@room_style.user.name}", user_path(@room_style.user) %><br>
     Rooms with this style: 
         <ul>
             <% @room_style.all_rooms.each do |room| %>
                 <li> 
-                    Room No: <%= link_to "#{room.id}", room %> 
+                    <%= link_to "Room No: #{room.id}", room %> 
+                    <br>
                     Room Type: <%= room.class.to_s == "OtherRoom"? room.room_type : room.class %> 
                 </li>
             <% end %>

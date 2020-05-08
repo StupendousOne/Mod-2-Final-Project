@@ -1,3 +1,10 @@
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |message| %>
+    <h4 style="color: red;"> Error: <%= message %> </h4>
+  <% end %>
+<% end %>
+
 <%= form_for @other_room do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
 
@@ -15,4 +22,10 @@
     <br>
 
     <%= f.submit %>
+<% end %>
+<br>
+<% if @other_room.persisted? %>
+    <%= link_to  "Back", other_room_path(@other_room) %>
+<% else %>
+    <%= link_to  "Back", other_rooms_path %>
 <% end %>

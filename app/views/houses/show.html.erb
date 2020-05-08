@@ -7,8 +7,8 @@
     <%@house.bathrooms.each do |bathroom|%>
         <li> This Bathroom is of The <%=bathroom.room_style.style%> style </li>
         <ul>
-        <li> This Bathroom Costs: <%= bathroom.bathroom_cost%> Dollars</li>
-        <% total_bathroom_cost += bathroom.bathroom_cost%>
+        <li> This Bathroom Costs: <%= bathroom.cost%> Dollars</li>
+        <% total_bathroom_cost += bathroom.cost%>
         <li> The size of this bathrooms is: <%=bathroom.size%> square feet</li>
         <% if bathroom.half?%>
             <li> This is a Half Bath </li>
@@ -30,8 +30,8 @@
     <%@house.garages.each do |garage|%>
         <li> This Garage is of The <%=garage.room_style.style%> Style </li>
         <ul>
-        <li> This Garage Costs: <%= garage.garage_cost%> Dollars</li>
-        <% total_garage_cost += garage.garage_cost%>
+        <li> This Garage Costs: <%= garage.cost%> Dollars</li>
+        <% total_garage_cost += garage.cost%>
         <li> The size of this garage is: <%=garage.size%> square feet</li>
         <li> <%= link_to "View This Garage", garage_path(garage) %> </li>
         </ul>
@@ -58,8 +58,8 @@
     <%@house.kitchens.each do |kitchen|%> 
         <li>This Kitchen is of the <%=kitchen.room_style.style%> style</li>
         <ul>
-        <li>This Kitchen Costs: <%= kitchen.kitchen_cost %> Dollars</li>
-        <% total_kitchen_cost += kitchen.kitchen_cost %>
+        <li>This Kitchen Costs: <%= kitchen.cost %> Dollars</li>
+        <% total_kitchen_cost += kitchen.cost %>
         <li>This Kitchen is <%=kitchen.size%> </li>
         <li> <%= link_to "View This Kitchen", kitchen_path(kitchen) %> </li>
         </ul>

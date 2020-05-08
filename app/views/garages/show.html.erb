@@ -20,6 +20,9 @@
                 </li>
             <% end %>
         </ul>
+    Cost: <%= " #{@garage.cost}" %>
+    <br>
+    Room Designer: <%= link_to " #{@garage.user.name}", user_path(@garage.user) %>
 </ul>
 <br><br>
 

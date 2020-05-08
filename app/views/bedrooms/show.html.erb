@@ -11,6 +11,7 @@
     Style:
     <%= link_to  " #{@bedroom.room_style.style}", room_style_path(@bedroom.room_style) %>
     <br>
+    Cost: <%= " #{@bedroom.cost}"%>
     <%= "Houses using bedroom no. #{@bedroom.id}:" %>
         <ul>
             <% @bedroom.houses.each do |house| %>
@@ -19,6 +20,8 @@
                 </li>
             <% end %>
         </ul>
+        <br>
+    Designer: <%= link_to " #{@bedroom.user.name}", user_path(@bedroom.user) %>
 </ul>
 <br><br>
 <% if @bedroom.user == current_user %>
