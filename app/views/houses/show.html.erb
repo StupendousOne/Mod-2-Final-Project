@@ -33,6 +33,7 @@
         <li> This Garage Costs: <%= garage.garage_cost%> Dollars</li>
         <% total_garage_cost += garage.garage_cost%>
         <li> The size of this garage is: <%=garage.size%> square feet</li>
+        <li> <%= link_to "View This Garage", garage_path(garage) %> </li>
         </ul>
     <% end %>
     <br>
@@ -47,8 +48,7 @@
         <ul>
         <li>This Bedroom is <%=bedroom.size%> </li>
         </ul>
-        <% end %>
-  
+    <% end %>
     </ul>
 
 <li>There are <%=@house.kitchens.count%> Kitchens in this House</li>
@@ -63,7 +63,7 @@
         <li>This Kitchen is <%=kitchen.size%> </li>
         <li> <%= link_to "View This Kitchen", kitchen_path(kitchen) %> </li>
         </ul>
-        <% end %>
+    <% end %>
     <br>
     <li> Total Cost Of All Kitchens In This House: <%= total_kitchen_cost.round(2) %> </li>
     <br>
