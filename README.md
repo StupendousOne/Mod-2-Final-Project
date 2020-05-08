@@ -6,6 +6,4 @@ application up and running.
 TODO:
 
 * [ ] House New/Edit
-* [ ] Non personal user page needs all classes
-* [ ] Uniform layout
 
