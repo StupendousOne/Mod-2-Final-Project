@@ -9,6 +9,10 @@ class BedroomsController < ApplicationController
     end
 
     def edit
+        if current_user != @bedroom.user
+            flash.alert = "Cannot Edit Other User's Pages"
+            redirect_to bedroom_path(@bedroom)
+        end
     end
 
     def update

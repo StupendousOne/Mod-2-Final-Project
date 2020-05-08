@@ -9,6 +9,10 @@ class RoomStylesController < ApplicationController
     end
 
     def edit
+        if current_user != @room_style.user
+            flash.alert = "Cannot Edit Other User's Pages"
+            redirect_to room_style_path(@room_style)
+        end
     end
 
     def update

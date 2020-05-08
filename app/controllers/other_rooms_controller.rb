@@ -9,6 +9,10 @@ class OtherRoomsController < ApplicationController
     end
 
     def edit
+        if current_user != @other_room.user
+            flash.alert = "Cannot Edit Other User's Pages"
+            redirect_to other_room_path(@other_room)
+        end
     end
 
     def update

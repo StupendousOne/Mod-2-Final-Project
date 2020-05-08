@@ -9,6 +9,10 @@ class GaragesController < ApplicationController
     end
 
     def edit
+        if current_user != @garage.user
+            flash.alert = "Cannot Edit Other User's Pages"
+            redirect_to garage_path(@garage)
+        end
     end
 
     def update

@@ -34,8 +34,18 @@ class KitchensController < ApplicationController
     end
 
     def update
-        @kitchen.update(updated_params)
-        redirect_to kitchen_path(@kitchen)
+        updated_params = kitchen_params
+        house_ids = {current_user_houses: current_user.houses, update: updated_params[:house_ids]}
+        house_ids.reject{|id| id == ""}
+        updated_params[:house_ids] = @kitchen.get_all_missing_houses(house_ids)
+        
+        if(@kitchen.update(updated_params))
+            flash[:success] = "Bedroom Updated"
+            redirect_to kitchen_path(@kitchen)
+        else
+            flash[:errors] = @kitchen.errors.full_messages
+            redirect_to edit_kitchen_path(@kitchen)
+        end
     end
 
     def destroy
@@ -58,7 +68,7 @@ class KitchensController < ApplicationController
     private
 
         def kitchen_params
-            params.require(:kitchen).permit(:size, :room_style_id, :user_id)
+            params.require(:kitchen).permit(:size, :room_style_id, :user_id, house_ids:[])
         end
 
         def find_kitchen
